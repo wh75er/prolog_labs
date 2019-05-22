@@ -1,0 +1,20 @@
+domains
+	list = symbol*
+	thing = sm(symbol); lst(list)
+	
+
+predicates
+	is_list(thing).
+
+clauses
+	is_list(lst([])).
+	is_list(lst([_|T])):- is_list(lst(T)).
+		
+goal
+	is_list(sm(a)).
+	
+		account(1, 700000).
+	account(2, 8500).
+	account(3, 10000000).
+	account(4, 2000000).
+	account(5, 3000000).
