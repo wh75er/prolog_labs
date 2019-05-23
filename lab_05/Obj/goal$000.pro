@@ -24,6 +24,9 @@ predicates
     makeListWithEvenPos(NList, NList).
     makeListWithEvenPos(NList, integer, NList).
 
+    mergeLists(NList, NList, NList)
+    merge(NList, Nlist, NList)
+
 clauses
     len([], 0) :-
         !.
@@ -128,6 +131,21 @@ clauses
         makeListWithEvenPos(Tail, Index1, X),
         !.
 
+    mergeLists(L1, L2, X) :-
+        length(L1, Len1),
+        length(L2, Len2),
+        Len1 < Len2,
+        merge(L1, L2, X),
+        !.
+    mergeLists(L1, L2, X) :-
+        merge(L2, L1, X),
+        !.
+
+    merge([Head|[]], L2, [Head|L2]) :-
+        !.
+    merge([Head|Tail], L2, [Head|X]) :-
+        merge(Tail, L2, X),
+        !.
     
 goal
     %len([1, 2, 3, 4, 5, 6], Z).
@@ -137,4 +155,5 @@ goal
     %deleteEls([3, 1, 2, 2, 3, 4, 3, 5 ,6, 3], 3, Z).
     %makeSet([5, 5, 6, 3, 3, 3, 9, 10, 1, 1, 0, 5, 10], Set).
     %makeListGreaterThanEl([5, 3, 6, 99, 7, 9, 2, 0, 5, 3], 3, Z).
-    makeListWithEvenPos([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], Z).
+    %makeListWithEvenPos([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], Z).
+    mergeLists([9, 8, 7, 6],  [1, 2, 3], Z). 
