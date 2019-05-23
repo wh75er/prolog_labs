@@ -15,6 +15,8 @@ predicates
     makeSet(NList, NList)
     makeSet(NList, integer, NList)
 
+    makeListGreaterThanEl(NList, integer, NList)
+
 clauses
     len([], 0) :-
         !.
@@ -79,6 +81,16 @@ clauses
         !.
            
 
+    makeListGreaterThanEl([], _, []) :-
+        !.
+    makeListGreaterThanEl([_|Tail], El, X) :-
+        makeListGreaterThanEl(Tail, El, X),
+        !.
+    makeListGreaterThanEl([Head|Tail], El, X) :-
+        Head > El,
+        makeListGreaterThanEl(Tail, Head, X1),
+        X = [Head|X1],
+        !.
 
     
 goal
@@ -86,4 +98,5 @@ goal
     %listSum([2, 2, 2, 8, 2, 2], Z).
     %deleteEl([1, 2, 2, 3, 4, 3, 5, 6], 3, Z).
     %deleteEls([3, 1, 2, 2, 3, 4, 3, 5 ,6, 3], 3, Z).
-    makeSet([5, 6, 3, 9, 10, 1, 0, 5], Set).
+    %makeSet([5, 5, 6, 3, 3, 3, 9, 10, 1, 1, 0, 5, 10], Set).
+    makeListGreaterThanEl([5, 3, 6, 99, 7, 9, 2, 0, 5, 3], 3, Z).
