@@ -131,7 +131,6 @@ clauses
         makeListWithEvenPos(Tail, Index1, X),
         !.
 
-
     mergeLists(L1, L2, X) :-
         length(L1, Len1),
         length(L2, Len2),
