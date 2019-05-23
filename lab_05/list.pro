@@ -2,15 +2,24 @@ domains
     Number = integer
     NList = Number*
 predicates
-    length(NList, Number)
+    len(NList, Number)
+    listSum(NList, integer)
 
 clauses
-    length([], 0) :-
+    len([], 0) :-
         !.
-    length([_|Tail], X) :-
-        length(Tail, X1),
+    len([_|Tail], X) :-
+        len(Tail, X1),
         X = X1 + 1,
+        !.
+
+    listSum([Head|[]], Head) :-
+        !.
+    listSum([Head|Tail], X) :-
+        listSum(Tail, X1),
+        X = Head + X1,
         !.
     
 goal
-    length([1, 2, 3, 4, 5, 6], Z).
+    %len([1, 2, 3, 4, 5, 6], Z).
+    listSum([2, 2, 2, 8, 2, 2], Z).
