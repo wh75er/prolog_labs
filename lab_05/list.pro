@@ -3,6 +3,10 @@ domains
     NList = Number*
 predicates
     len(NList, Number)
+
+    length(NList, Number)
+    length(NList, Number, Number)
+
     listSum(NList, integer)
     deleteEl(NList, integer, NList)
     deleteEls(NList, integer, NList)
@@ -11,11 +15,14 @@ predicates
     permutation(NList, NList)
     bubble(NList, NList)
     /* Bubble sort engds*/
-
     makeSet(NList, NList)
     makeSet(NList, integer, NList)
 
     makeListGreaterThanEl(NList, integer, NList)
+
+    %even(integer)
+    %makeListWithEvenPos(NList, NList).
+    %makeListWithEvenPos(NList, integer, NList).
 
 clauses
     len([], 0) :-
@@ -24,6 +31,15 @@ clauses
         len(Tail, X1),
         X = X1 + 1,
         !.
+
+    length(List, X) :-
+        length(List, 0, X),
+        !.
+    length([], Count, Count) :-
+        !.
+    length([_|Tail], Count, X) :-
+        NewCount = Count + 1,
+        length(Tail, NewCount, X).
 
 
     listSum([Head|[]], Head) :-
@@ -92,11 +108,17 @@ clauses
         makeListGreaterThanEl(Tail, El, X),
         !.
 
+
+    %even(N) :-
+    %    N mod 2 = 0.
+    %makeListWithEvenPos([Head|Tail], X) :-   
+
     
 goal
     %len([1, 2, 3, 4, 5, 6], Z).
+    length([1, 2, 3, 4, 5, 6, 7], Z).
     %listSum([2, 2, 2, 8, 2, 2], Z).
     %deleteEl([1, 2, 2, 3, 4, 3, 5, 6], 3, Z).
     %deleteEls([3, 1, 2, 2, 3, 4, 3, 5 ,6, 3], 3, Z).
     %makeSet([5, 5, 6, 3, 3, 3, 9, 10, 1, 1, 0, 5, 10], Set).
-    makeListGreaterThanEl([5, 3, 6, 99, 7, 9, 2, 0, 5, 3], 3, Z).
+    %makeListGreaterThanEl([5, 3, 6, 99, 7, 9, 2, 0, 5, 3], 3, Z).
