@@ -64,6 +64,26 @@ goal
 
 \end{lstlisting}
 
+
+\begin{lstlisting}[style=lispStyle, caption={ Резольвента для правила max2.},
+                    label={lst:resolve}]
+
+ТР: max2(5, 3, R)
+Шаг1:
+    ТЦ: max2(5, 3, R)
+    ПР1: 5 = X, 3 = Y, R = X (5)
+    ТР: 5>=3, !
+Шаг2:
+    ТЦ:5>=3 -> Успех - выполнение системного предиката
+    ТР: !
+Шаг3:
+    ТЦ:!
+    ТР: пусто
+    R = 5
+
+\end{lstlisting}
+
+
 \begin{lstlisting}[style=lispStyle, caption={ База знаний нахождения факториала и чисел фибоначчи},
                     label={lst:fact}]
 predicates
