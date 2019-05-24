@@ -42,6 +42,15 @@ clauses
 
 \end{lstlisting}
 
+\begin{figure}[ht!]
+    \centering{
+        \includegraphics[width=1\textwidth]{img/resolveTree.png}
+	\caption{ Дерево решений для правила parent(X, Y), представленного в листинге \ref{lst:family}.}
+        \label{fig:meh1}
+        }
+\end{figure}
+
+
 \begin{lstlisting}[style=lispStyle, caption={ База знаний нахождения максимума среди двух элементов и трех.},
                     label={lst:max}]
 
@@ -64,8 +73,16 @@ goal
 
 \end{lstlisting}
 
+\begin{figure}[ht!]
+    \centering{
+        \includegraphics[width=1\textwidth]{img/resolveTree2.png}
+	\caption{ Дерево решений для правила max3(X, Y, Z, X), представленного в листинге \ref{lst:max}.}
+        \label{fig:meh2}
+        }
+\end{figure}
 
-\begin{lstlisting}[style=lispStyle, caption={ Резольвента для правила max2.},
+
+\begin{lstlisting}[style=lispStyle, caption={ Резольвента для правила max2, представленного в листинге \ref{lst:max}.},
                     label={lst:resolve}]
 
 ТР: max2(5, 3, R)
