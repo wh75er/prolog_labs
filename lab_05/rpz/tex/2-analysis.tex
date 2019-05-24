@@ -4,6 +4,45 @@
 \section{ Построенная база знаний}
 
 \begin{lstlisting}[style=lispStyle, caption={Получение элементов списка с помощью команд car и cdr.},
+                    label={lst:family}]
+
+predicates
+    parent(symbol, symbol)
+    male(symbol)
+    female(symbol)
+    grandparent(symbol, symbol)
+    father(symbol, symbol)
+    mother(symbol, symbol)
+    chils(symbol, symbol)
+
+clauses
+    parent(tom, jane)
+    parent(lily, jane)
+    parent(jane, bob)
+    parent(bob, carol)
+    parent(ann, carol)
+    parent(carol, jake)
+
+    male(tom)
+    male(bob)
+    male(jake)
+    female(lily)
+    female(jane)
+    female(carol)
+    female(ann)
+
+    child(X, Y) :-
+        parent(Y, X)
+    father(X, Y) :-
+        parent(X, Y), male(X).
+    mother(X, Y) :-
+        parent(X, Y), female(X).
+    grandparent() :-
+        parent(X, Z), parent(Z, Y)
+
+\end{lstlisting}
+
+\begin{lstlisting}[style=lispStyle, caption={Получение элементов списка с помощью команд car и cdr.},
                     label={lst:max}]
 
 predicates
